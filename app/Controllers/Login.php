@@ -42,9 +42,21 @@ class Login extends BaseController
             ];
             session()->set("LoggedUserData", $userdata);
             $email = session()->get("LoggedUserData")['email'];
-          
-            session()->setFlashData("msg", 'success#Selamat datang, ' .  '. Anda kini dapat mendaftar event memakai akun ini.');
-            return view('v_login', $userdata);
+            $cek_email = 'jofan.web2ti20a4@gmail.com';
+
+
+            if ($email != $cek_email) {
+                $data = [
+                    'title' => 'LPJ',
+                    'subtitle' => 'HMPTI UDB',
+                    'googleButton' => $this->googleClient->createAuthUrl(),
+                ];
+                session()->setFlashData("msg", 'error#Maaf Akun Anda Belum Terdaftarar, ' .  '..');
+                return view('login', $data);
+            } else {
+                session()->setFlashData("msg", 'success#Selamat datang, ' .  '. Anda kini dapat mendaftar event memakai akun ini.');
+                return view('v_login', $userdata);
+            }
         }
         // }
     }
