@@ -42,25 +42,7 @@ class Login extends BaseController
             ];
             session()->set("LoggedUserData", $userdata);
             $email = session()->get("LoggedUserData")['email'];
-            // $cek_email = $this->Model_Login->check_member($email);
-            // $query_cekuser = $this->db->query("SELECT * FROM tbl_admin  WHERE email='$email'");
-            // $row = $query_cekuser->getRow();
-
-            // if ($cek_email == false) {
-            //     session()->setFlashData("msg", 'error#Anda Akun Anda Belum Terdaftarar, ' .  '..');
-            //     return redirect()->to(base_url('login'));
-            // } else {
-            //     session()->remove('LoggedUserData');
-            //     session()->remove('AccessToken');
-            //     $simpan_session = [
-            //         'login' => true,
-            //         'id_admin' => $row->id_admin,
-            //         'email' => $row->email,
-            //         'nama' => $row->nama,
-            //         'level' => $row->level,
-            //     ];
-
-            // session()->set($simpan_session);
+          
             session()->setFlashData("msg", 'success#Selamat datang, ' .  '. Anda kini dapat mendaftar event memakai akun ini.');
             return view('v_login', $userdata);
         }
