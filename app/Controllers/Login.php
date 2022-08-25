@@ -11,8 +11,8 @@ class Login extends BaseController
         session();
         require_once APPPATH . "libraries/vendor/autoload.php";
         $this->googleClient = new \Google_Client();
-        $this->googleClient->setClientId("526050454044-a6j0g4l2aepd37qvjou8hdr7q528aham.apps.googleusercontent.com");
-        $this->googleClient->setClientSecret("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");
+        $this->googleClient->setClientId("");
+        $this->googleClient->setClientSecret("");
         $this->googleClient->setRedirectUri("http://localhost:8080/login/");
         $this->googleClient->addScope("email");
         $this->googleClient->addScope("profile");
